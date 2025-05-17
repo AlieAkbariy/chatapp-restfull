@@ -7,13 +7,21 @@ services:
       POSTGRES_USER: chatuser
       POSTGRES_PASSWORD: chatpass
     ports:
-      - '5432:5432'
+      - '54333:5432'
     volumes:
       - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U chatuser -d chatapp']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - main
   app:
     build: .
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       DATABASE_URL: postgres://chatuser:chatpass@db:5432/chatapp
       NODE_ENV: production
@@ -25,5 +33,12 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    networks:
+      - main
 volumes:
   db_data:
+
+networks:
+  main:
+    driver: bridge
+    name: chatapp_network
