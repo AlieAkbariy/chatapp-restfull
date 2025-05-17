@@ -39,11 +39,11 @@ A modern, full-featured chat application built with NestJS, Prisma, and PostgreS
    ```
 5. **Start the app:**
    ```bash
-   npm run start:dev
+   npm run start
    ```
 6. **Access the API:**
    - API: http://localhost:3000
-   - Swagger docs: http://localhost:3000/api
+   - Swagger docs: http://localhost:3000
 
 ### Running with Docker
 
@@ -58,19 +58,8 @@ A modern, full-featured chat application built with NestJS, Prisma, and PostgreS
 
 ## API Documentation
 
-- Swagger UI is available at `/api` when the app is running.
+- Swagger UI is available at `/` when the app is running.
 - All endpoints are documented, including authentication, chat room, and message APIs.
-
-## Testing
-
-- **Unit tests:**
-  ```bash
-  npm run test
-  ```
-- **End-to-end tests:**
-  ```bash
-  npm run test:e2e
-  ```
 
 ## Project Structure
 
