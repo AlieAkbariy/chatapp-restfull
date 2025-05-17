@@ -85,7 +85,3 @@ A modern, full-featured chat application built with NestJS, Prisma, and PostgreS
 - `DATABASE_URL` - PostgreSQL connection string
 - `JWT_SECRET` - Secret for signing JWT tokens
 - `NODE_ENV` - Environment (development, production, etc)
-
-## License
-
-MIT
