@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: chatapp
+      POSTGRES_USER: chatuser
+      POSTGRES_PASSWORD: chatpass
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://chatuser:chatpass@db:5432/chatapp
+      NODE_ENV: production
+      JWT_SECRET: supersecret
+    ports:
+      - '3000:3000'
+    command: ['sh', '-c', 'npx prisma migrate deploy && npm run start:prod']
+    restart: always
+    volumes:
+      - .:/app
+      - /app/node_modules
+volumes:
+  db_data:
