@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -10,7 +10,7 @@ const ShareConfigModule = ConfigModule.forRoot({
 });
 
 @Module({
-  imports: [ShareConfigModule, UserModule],
+  imports: [ShareConfigModule, AuthModule],
   controllers: [],
   providers: [],
 })

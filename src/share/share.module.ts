@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ShareDatabaseModule } from './modules/share-database/share-database.module';
+import { PrismaService } from './services/prisma.service';
 
 @Module({
-  imports: [ShareDatabaseModule],
+  imports: [],
   controllers: [],
-  providers: [],
-  exports: [ShareDatabaseModule],
+  providers: [PrismaService],
+  exports: [PrismaService],
 })
 export class ShareModule {}
