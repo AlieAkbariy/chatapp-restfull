@@ -14,15 +14,17 @@ model User {
   username String @unique @db.VarChar(255)
   password String @db.VarChar(150)
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime?        @updatedAt
+  chatRoomMembers ChatRoomMember[]
+  messages        Message[]
 }
 
 model ChatRoom {
-  id        Int                @id @default(autoincrement())
-  name      String             @db.VarChar(255)
-  createdAt DateTime           @default(now())
-  updatedAt DateTime?          @updatedAt
+  id        Int              @id @default(autoincrement())
+  name      String           @db.VarChar(255)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime?        @updatedAt
   members   ChatRoomMember[]
   messages  Message[]
 }
